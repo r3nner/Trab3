@@ -6,7 +6,7 @@
 void listaAluno(Sistema* sistema){ //imprimir os alunos
     Aluno* p;
     printf("===== ALUNOS CADASTRADOS =====\n\n");
-    for (p = sistema->lista_alunos; p != NULL; p = p->prox){
+    for (p= sistema->lista_alunos; p!= NULL; p= p->prox){
         printf("========\nNome: %s\nMatricula: %s\nTelefone: %s\n\n", p->nome, p->matricula, p->telefone);
     }
 }
@@ -14,7 +14,7 @@ void listaAluno(Sistema* sistema){ //imprimir os alunos
 void listaProfessor(Sistema* sistema){ //imprimir os professores
     Professor* p;
     printf("===== PROFESSORES CADASTRADOS =====\n\n");
-    for (p = sistema->lista_professores; p != NULL; p = p->prox){
+    for (p= sistema->lista_professores; p!= NULL; p= p->prox){
         printf("========\nNome: %s\nCodigo: %s\nDepartamento: %s\n\n", p->nome, p->codigo, p->departamento);
     }
 }
@@ -22,8 +22,7 @@ void listaProfessor(Sistema* sistema){ //imprimir os professores
 void listaProjeto(Sistema* sistema){ //imprimir os projetos
     Projeto* p;
     printf("====== PROJETOS CADASTRADOS =======\n\n");
-    for (p = sistema->lista_projetos; p != NULL; p = p->prox){
-
+    for (p= sistema->lista_projetos; p!= NULL; p= p->prox){
         printf("========\nCodigo: %s\nDescricao: %s\nTipo: %s\nOrcamento Total: %.2f reais\nOrcamento Disponivel: %.2f reais\nProfessor Coordenador: %s\n\n", p->codigo, p->descricao, p->tipo, p->orcamento_aprovado, p->orcamento_disponivel, p->professor_responsavel->nome);
     }
 }
@@ -31,8 +30,7 @@ void listaProjeto(Sistema* sistema){ //imprimir os projetos
 void listaVinculo(Sistema* sistema){ //imprimir os vinculos
     Vinculo* p;
     printf("======== VINCULOS CADASTRADOS ========\n\n");
-    for (p = sistema->lista_vinculos; p != NULL; p = p->prox){
-
+    for (p= sistema->lista_vinculos; p!= NULL; p= p->prox){
         printf("========\nNome do aluno: %s\nDescricao do projeto: %s\nValor da bolsa: %.2f reais\n\n", p->aluno->nome, p->projeto->descricao, p->valor_bolsa);
     }
 }
@@ -43,21 +41,21 @@ void gerar_relatorio(Sistema* sistema){ //gerar o relatorio final
         return;
     }
     Projeto* projeto_atual = sistema->lista_projetos; //para buscar info do projeto
-    while (projeto_atual!=NULL) {
-        printf("\nProjeto Codigo: %d, Tipo: %s, Professor Coordenador: %s\n", projeto_atual->codigo, projeto_atual->tipo, projeto_atual->professor_responsavel->nome);
-        printf("Orcamento disponivel: %.2f\n", projeto_atual->orcamento_disponivel);
+    while (projeto_atual!=NULL){
+        printf("\n\nProjeto Codigo: %s\nTipo: %s\nProfessor Coordenador: %s\n", projeto_atual->codigo, projeto_atual->tipo, projeto_atual->professor_responsavel->nome);
+        printf("Orcamento disponivel: %.2f reais\n", projeto_atual->orcamento_disponivel);
 
         Vinculo* vinculo_atual = sistema->lista_vinculos; //para buscar info do vinculo
         int encontrou_vinculo = 0;
         while (vinculo_atual!=NULL) {
             if (vinculo_atual->projeto->codigo== projeto_atual->codigo) {
-                printf("Aluno: %s, Valor Bolsa Mensal: %.2f\n\n", vinculo_atual->aluno->nome, vinculo_atual->valor_bolsa);
+                printf("Aluno vinculado: %s, Valor Bolsa Mensal: %.2f reais\n", vinculo_atual->aluno->nome, vinculo_atual->valor_bolsa);
                 encontrou_vinculo= 1;
             }
             vinculo_atual= vinculo_atual->prox;
         }
         if (encontrou_vinculo==0) {
-            printf("Não há alunos vinculados a este projeto.\n");
+            printf("Nao ha alunos vinculados a este projeto.\n");
         }
         projeto_atual = projeto_atual->prox;
     }
@@ -123,9 +121,7 @@ int main(){
                 break;
 
             case 0:
-
                 break;
-
             default:
                 printf("\n====== Comando nao reconhecido ========\n\n");
                 break;
