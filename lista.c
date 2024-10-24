@@ -1,7 +1,6 @@
 #include "lista.h"
 #include "struct.h"
 
-
 Aluno* verificarAluno(Sistema* sistema, char matricula[]){
     Aluno* encontrado = sistema->lista_alunos;
     while (encontrado != NULL) {
@@ -57,7 +56,6 @@ Projeto* verificarCodigo(Sistema* sistema, char codigo[]){
 }
 
 void cadastrarAluno(Sistema* sistema){
-
     char matricula[100];
 
     printf("\n======== CADASTRO DE ALUNO ========\n\n");
@@ -75,7 +73,6 @@ void cadastrarAluno(Sistema* sistema){
         exit(1);
     }
     strcpy(novo_aluno->matricula, matricula);
-    //novo_aluno->matricula= matricula;
 
     printf("Digite o nome do aluno: ");
     scanf(" %[^\n]s", novo_aluno->nome);
@@ -147,7 +144,6 @@ void cadastrarProjeto(Sistema* sistema){
     scanf(" %[^\n]s", projeto->tipo);
     printf("Qual o orcamento aprovado do projeto: \n");
     scanf(" %f", &projeto->orcamento_aprovado);
-
 
     projeto->orcamento_disponivel=projeto->orcamento_aprovado;
 
@@ -239,7 +235,7 @@ void excluiVinculo(Sistema* sistema) {
 
     Vinculo* p = sistema->lista_vinculos;
     Vinculo* ant = NULL;
-    for (; p != NULL; p = p->prox){
+    for (; p!= NULL; p= p->prox){
 
         if (!strcmp(p->aluno->matricula, matricula)){
             break;
