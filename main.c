@@ -44,8 +44,7 @@ void gerar_relatorio(Sistema* sistema){ //gerar o relatorio final
     }
     Projeto* projeto_atual = sistema->lista_projetos; //para buscar info do projeto
     while (projeto_atual!=NULL) {
-        printf("\nProjeto Codigo: %d, Tipo: %s, Professor Coordenador: %s\n",
-               projeto_atual->codigo, projeto_atual->tipo, projeto_atual->professor_responsavel->nome);
+        printf("\nProjeto Codigo: %d, Tipo: %s, Professor Coordenador: %s\n", projeto_atual->codigo, projeto_atual->tipo, projeto_atual->professor_responsavel->nome);
         printf("Orcamento disponivel: %.2f\n", projeto_atual->orcamento_disponivel);
 
         Vinculo* vinculo_atual = sistema->lista_vinculos; //para buscar info do vinculo
